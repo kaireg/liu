@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js对象</title>
+</head>
+<body>
+    <p>内置对象: String字符串对象，Array数组对象，Date日期对象...</p>
+    <p>在js中一切皆对象   每个对象都带有属性和方法</p>
+    <p>自定义对象</p>
+    <ol>
+        <li>定义并创建对象实例</li>
+        <li id="olid"></li>
+        <li>使用函数来定义对象，然后创建新的对象实例</li>
+        <li id="book"></li>
+    </ol>
+    <script>
+
+        //定义并创建对象实例
+        people = new Object();
+        people.name='liu';
+        people.age=22;
+        document.getElementById('olid').innerHTML= "name:"+people.name+",age:"+people.age;
+
+
+        //通过函数来定义
+        function book(bookname,authorname) {
+            this.bookname = bookname;
+            this.authorname = authorname;
+        }
+        bk = new book("《python核心编程》","Wesley J.Chun");
+        document.getElementById('book').innerHTML="书名:" + bk.bookname + ",作者:" + bk.authorname;
+    </script>
+</body>
+</html>

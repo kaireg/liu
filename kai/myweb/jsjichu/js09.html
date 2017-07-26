@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件详解</title>
+</head>
+<body>
+    <div>
+        <p>事件冒泡：从最具体的元素到最不具体的元素  p -> div -> body -> html</p>
+        <p>事件捕获：从最不具体的元素到最具体的元素  html -> body -> div -> p</p>
+        <button id="bta" onclick="bta()">按钮a</button>
+        <button id="btb">按钮b</button>
+        <button id="btc">按钮c</button>
+        <button id="btd">按钮d</button>
+    </div>
+    <script>
+        function bta() {
+            alert('html 事件处理！');
+        }
+
+        btbf = document.getElementById("btb");
+        btbf.onclick = function () {alert('DOM0级处理事件1')};    //多个事件会被覆盖
+        btbf.onclick = function () {alert('DOM0级处理事件2')};
+        btbf.onclick = function () {alert('DOM0级处理事件3')};
+
+        //多个事件不会被覆盖，逐个依次执行！
+        var btn = document.getElementById('btc');
+        btn.addEventListener('click',btc);
+        btn.addEventListener('click',btc1);
+        function btc() {
+            alert("DOM2级处理事件1")
+        }
+         function btc1() {
+            alert("DOM2级处理事件2")
+        }
+
+        var btnd = document.getElementById('btd');
+        if (btnd.addEventListener) {
+                btnd.addEventListener('click',btd);
+        }else if (btnd.attachEvent()) {
+                btnd.attachEvent('onclick',btd);
+        }else {
+                btnd.onclick = btd();
+        }
+        function btd() {
+            alert('DOM事件处理')
+        }
+    </script>
+    <br/>
+    <div id="div">
+        <button id="btx">按钮x</button>
+        <a id="aid" href="http://www.baidu.com">百度</a>
+    </div>
+    <script>
+        document.getElementById('btx').addEventListener('click',btnx);
+        document.getElementById('div').addEventListener('click',btnx);
+        document.getElementById('aid').addEventListener('click',btna);
+
+        function btnx(event) {
+            alert(event.type);
+            alert(event.target);
+            event.stopPropagation();    //阻止事件冒泡行为
+        }
+
+        function btna(event) {
+            event.preventDefault();     //阻止事件默认行为，此处的a链接并未跳转
+        }
+
+
+
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="div" onmouseout="onOut(this)" onmouseover="onOver(this)"></div>
+    <script>
+        function onOut(ooj) {
+            ooj.innerHTML = "hello,world!";
+        }
+        function onOver(ooj) {
+            ooj.innerHTML = "biubiubiu!";
+        }
+    </script>
+    <li>
+        <ol>onClick      单击事件</ol>
+        <ol>onMouseout   鼠标经过事件</ol>
+        <ol>onmouseover  鼠标移出事件</ol>
+        <ol>onchange     文本内容改变事件</ol>
+        <ol>onselect     文本框选中事件</ol>
+        <ol>onfocus      光标聚集事件</ol>
+        <ol>onblur       移开光标事件</ol>
+        <ol>onload       网页加载事件</ol>
+        <ol>onunload     关闭网页事件</ol>
+    </li>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客列表</title>
+    <style>
+        .content{font-size:12px;}
+    </style>
+</head>
+<body>
+<h1>博客列表</h1>
+<a href="/list/">添加</a>
+    {% for test in tests %}
+<div>
+    <h3>标题：{{test.title}}</h3>
+    <div class="content">
+        {{test.content}}
+    </div>
+</div>
+<hr>
+</body>
+    {% endfor %}
+</html>

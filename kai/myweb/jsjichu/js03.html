@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>比较运算符</title>
+</head>
+<body>
+    <script>
+        //  == === != !== < >  <= >=    返回值为bool类型
+        var i = 10;
+        var j = 5;    // ===  数据类型和值都相等才返回ture   ！==同理
+//        document.write(i==j);
+        document.write(j<10?"j小于10":"j大于10");
+    </script>
+    <p>条件判断语句 if else</p>
+    <script>
+        //可以无限制嵌套
+        if (i <10){
+            document.write("小于10!");
+        }else if (i>10){
+            document.write("大于10!");
+        }else {
+            document.write("等于10!");
+        }
+    </script>
+    <p>switch语句</p>
+    <script>
+        var k = 4;
+        switch (k){
+            case 1:
+                document.write("1");
+                break;     //跳出当前循环
+            case 2:
+                document.write("2");
+                break;
+            case 3:
+                document.write("3");
+                break;
+            case 10:
+                document.write("10");
+                break;
+            default:    //当不满足于任一条件时，执行default
+                document.write("mdzz");
+                break;
+        }
+    </script>
+    <p>for循环</p>
+    <script>
+        a =[1,2,3,4,5,6,7,8];
+        for (var j=0;j<8;j++){
+            document.write(a[j] + ' , ');
+        }
+            document.write('<br>');
+        for (x in a ){
+            document.write(a[x]);
+            document.write(" ");
+            document.write(x);
+            document.write(" , ");
+        }
+    </script>
+    <p>while do while 语句</p>
+    <script>
+        var z = m = 0;
+        //while  先判断在执行
+        while ( z<10 ){
+            document.write(z + ',');
+            z++;
+        }
+        document.write("<br>");
+        //do while 先执行在判断
+        do {
+            document.write(m + ',');
+            m++;
+        }while ( m<10 ){
+
+        }
+    </script>
+    <p>跳转语句</p>
+    <script>
+        for(var t=0;t<10;t++){
+            if(t==5){
+                document.write("<p>t=5,这里跳出了当前循环！</p>");
+                continue;
+            }
+            if (t==8){
+                document.write("<p>t=8,这里跳出了整个循环！</p>")
+                break;
+            }
+            document.write(t+',')
+        }
+    </script>
+</body>
+</html>

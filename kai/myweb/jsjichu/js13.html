@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM详解</title>
+</head>
+<body>
+    <p name="pn" id="pid">p1</p>
+    <p name="pn" >p2</p>
+    <p name="pn" class="pc">p3</p>
+    <p name="pn" class="pc">p4</p>
+    <br>
+    <a id="aid" >链接</a>
+    <span id="spid"></span>
+    <script>
+        document.getElementsByName('pn').item(1).innerHTML='hello,world!';   //name  返回的是一个数组
+        document.getElementsByClassName('pc').item(0).innerHTML='liu!';    //classname  返回的是一个数组
+        document.getElementsByTagName('p').item(3).innerHTML='kai!';    //tagname  返回的是一个数组
+        document.getElementById('pid').innerHTML='jin!';   //id   是唯一值   返回的是一个值
+        document.getElementById('aid').setAttribute("href","http://www.baidu.com");   //设置元素属性
+        var sp = document.getElementById('aid').getAttribute('href');   //获取元素属性
+        document.getElementById('spid').innerHTML=sp;
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+    <p id="pid">hello</p>
+    <a id="aid" href="http://www.baidu.com">百度</a>
+    <br/>
+    <button id="bta" onclick="btn()">按钮a</button>
+    <span>hello</span>
+    <span>hello</span>
+    <span>hello</span>
+    <br/>
+    <button onclick="demo()">按钮p</button>
+    <button onclick="link()">按钮l</button>
+    <script>
+        function demo() {
+            document.getElementById('pid').innerHTML="world!";
+        }
+        function link() {
+            document.getElementById('aid').href="http://www.163.com";
+            document.getElementById('aid').innerHTML='网易';
+        }
+        function btn() {
+            document.getElementsByTagName('span').innerHTML="我变了";
+        }
+    </script>
+</body>
+</html>

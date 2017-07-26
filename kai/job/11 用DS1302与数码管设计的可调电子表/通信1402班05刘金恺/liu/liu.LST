@@ -1,0 +1,167 @@
+C51 COMPILER V7.06   LIU                                                                   11/08/2016 12:21:43 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE LIU
+OBJECT MODULE PLACED IN liu.OBJ
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE liu.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>
+   3          #include <string.h>
+   4          #define uint unsigned int
+   5          #define uchar unsigned char
+   6          
+   7          sbit IO = P1^0;
+   8          sbit SCLK = P1^1;
+   9          sbit RST = P1^2;
+  10          sbit RS = P2^0;
+  11          sbit RW = P2^1;
+  12          sbit EN = P2^2;
+  13          
+  14          uchar *WEEK[]=
+  15          {
+  16                  "SUN","***","MON","TUS","WEN","THU","FRI","SAT"
+  17          };
+  18          uchar LCD_DSY_BUFFER1[]={"DATE 00-00-00    "};
+  19          uchar LCD_DSY_BUFFER2[]={"TIME 00:00:00    "};
+  20          uchar DateTime[7];
+  21          
+  22          void DelayMS(uint ms)
+  23          {
+  24   1              uchar i;
+  25   1              while(ms--)
+  26   1              {
+  27   2                      for(i=0;i<120;i++);
+  28   2              }
+  29   1      }
+  30          
+  31          void Write_A_Byte_TO_DS1302(uchar x)
+  32          {
+  33   1              uchar i;
+  34   1              for(i=0;i<8;i++)
+  35   1              {
+  36   2                      IO=x&0x01;SCLK=1;SCLK=0;x>>=1;
+  37   2              }
+  38   1      }
+  39          
+  40          uchar Get_A_Byte_FROM_DS1302()
+  41          {
+  42   1              uchar i,b=0x00;
+  43   1              for(i=0;i<8;i++)
+  44   1              {
+  45   2                      b |= _crol_((uchar)IO,i);
+  46   2                      SCLK=1;SCLK=0;
+  47   2              }
+  48   1              return b/16*10+b%16;
+  49   1      }
+  50          
+  51          uchar Read_Data(uchar addr)
+  52          {
+  53   1              uchar dat;
+  54   1              RST = 0;SCLK=0;RST=1;
+  55   1              Write_A_Byte_TO_DS1302(addr);
+C51 COMPILER V7.06   LIU                                                                   11/08/2016 12:21:43 PAGE 2   
+
+  56   1              dat = Get_A_Byte_FROM_DS1302();
+  57   1              SCLK=1;RST=0;
+  58   1              return dat;
+  59   1      }
+  60          
+  61          void GetTime()
+  62          {
+  63   1              uchar i,addr = 0x81;
+  64   1              for(i=0;i<7;i++)
+  65   1              {
+  66   2                      DateTime[i]=Read_Data(addr);addr+=2;
+  67   2              }
+  68   1      }
+  69          
+  70          uchar Read_LCD_State()
+  71          {
+  72   1              uchar state;
+  73   1              RS=0;RW=1;EN=1;DelayMS(1);
+  74   1              state=P0;
+  75   1              EN = 0;DelayMS(1);
+  76   1              return state;
+  77   1      }
+  78          
+  79          
+  80          void LCD_Busy_Wait()
+  81          {
+  82   1              while((Read_LCD_State()&0x80)==0x80);
+  83   1              DelayMS(5);
+  84   1      }
+  85          
+  86          void Write_LCD_Data(uchar dat)
+  87          {
+  88   1              LCD_Busy_Wait();
+  89   1              RS=1;RW=0;EN=0;P0=dat;EN=1;DelayMS(1);EN=0;     
+  90   1      }
+  91          
+  92          void Write_LCD_Command(uchar cmd)
+  93          {
+  94   1              LCD_Busy_Wait();
+  95   1              RS=0;RW=0;EN=0;P0=cmd;EN=1;DelayMS(1);EN=0;     
+  96   1      }
+  97          
+  98          void Init_LCD()
+  99          {
+ 100   1              Write_LCD_Command(0x38);
+ 101   1              DelayMS(1);     
+ 102   1              Write_LCD_Command(0x01);
+ 103   1              DelayMS(1);     
+ 104   1              Write_LCD_Command(0x06);
+ 105   1              DelayMS(1);     
+ 106   1              Write_LCD_Command(0x0c);
+ 107   1              DelayMS(1);     
+ 108   1      }
+ 109          
+ 110          void Set_LCD_POS(uchar p)
+ 111          {
+ 112   1              Write_LCD_Command(p|0x80);      
+ 113   1      }
+ 114          
+ 115          void Display_LCD_String(uchar p,uchar *s)
+ 116          {
+ 117   1              uchar i;
+C51 COMPILER V7.06   LIU                                                                   11/08/2016 12:21:43 PAGE 3   
+
+ 118   1              Set_LCD_POS(p);
+ 119   1              for(i=0;i<16;i++)
+ 120   1              {
+ 121   2                      Write_LCD_Data(s[i]);
+ 122   2                      DelayMS(1);     
+ 123   2              }
+ 124   1      }
+ 125          
+ 126          void Format_DateTime(uchar d,uchar *a)
+ 127          {
+ 128   1              a[0]=d/10+'0';
+ 129   1              a[1]=d%10+'0';
+ 130   1      }
+ 131          
+ 132          void main()
+ 133          {
+ 134   1              Init_LCD();
+ 135   1              while(1)
+ 136   1              {
+ 137   2                      GetTime();
+ 138   2                      Format_DateTime(DateTime[6],LCD_DSY_BUFFER1+5);
+ 139   2                      Format_DateTime(DateTime[4],LCD_DSY_BUFFER1+8);
+ 140   2                      Format_DateTime(DateTime[3],LCD_DSY_BUFFER1+11);
+ 141   2      
+ 142   2                      strcpy(LCD_DSY_BUFFER1+13,WEEK[DateTime[5]]);
+ 143   2      
+ 144   2                      Format_DateTime(DateTime[2],LCD_DSY_BUFFER1+5);
+ 145   2                      Format_DateTime(DateTime[1],LCD_DSY_BUFFER1+8);
+ 146   2                      Format_DateTime(DateTime[0],LCD_DSY_BUFFER1+11);
+ 147   2      
+ 148   2                      Display_LCD_String(0x00,LCD_DSY_BUFFER1);
+ 149   2                      Display_LCD_String(0x40,LCD_DSY_BUFFER2);
+ 150   2              }
+ 151   1      }}
+*** ERROR C141 IN LINE 151 OF LIU.C: syntax error near '}'
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)

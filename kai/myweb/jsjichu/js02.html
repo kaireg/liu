@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运算符</title>
+</head>
+<body>
+    <p>i = 10 ; j = 10 ; i + j = ?</p>
+    <p id="sum"></p>
+    <button onclick="mysum()">结果</button>
+    <script>
+        //  ++i 先加在赋值  i++ 先赋值在加
+        //     +  -  *  /  %取余  ++  --
+        //   += -+ *= /=  %=
+        function mysum() {
+            var i = 10;
+            var j = 10;
+            var m = i + j ;
+            document.getElementById("sum").innerHTML=m;
+        }
+    </script>
+</body>
+</html>

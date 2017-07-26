@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>javascript</title>
+		<style>
+			#box{
+				width:100px ;
+				height:100px ;
+				background:red ;
+			}
+		</style>
+		<script>
+				window.onload=function(){
+			document.getElementById("btn").onclick=function(){
+				document.getElementById('box').style.background='blue';
+				document.getElementById('box').style.width="200px";
+				document.getElementById("box").style.height="200px";
+			};
+		}
+		</script>
+	</head>
+	<body>
+		<input type="button" name="btn" id="btn" value="按钮" />
+		<div id="box"></div>
+	</body>
+</html>

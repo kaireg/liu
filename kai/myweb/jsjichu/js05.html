@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>异常处理</title>
+</head>
+<body>
+    <script>
+        var liu = 998;
+        function demo() {
+            try {
+                alert(liu);
+            }catch (err){
+                alert(err)
+            }
+        }
+        //demo()
+    </script>
+
+    try {
+        可能发生异常的代码块
+    }catch (异常类型){
+        发生异常执行的代码
+    }
+
+
+    <form>
+        <input id="txt" type="text" >
+        <input id="btn" type="button" onclick="fun()" value="提交">
+    </form>
+    <script>
+        function fun() {
+            try {
+              var  t = document.getElementById("txt").value;
+                if (t==""){
+                    throw "请输入";
+                }
+                }catch (err) {
+                    alert("err");
+            }
+        }
+    </script>
+</body>
+</html>

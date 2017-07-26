@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>date时间对象 Array数组对象</title>
+</head>
+<body onload="datetime()">
+    <p>date对象</p>
+    <p id="pid"></p>
+    <p id="time" ></p>
+    <p>Array对象</p>
+    <p id="arr"></p>
+    <p id="sort"></p>
+    <script>
+        function datetime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            m = checktime(m);
+            s = checktime(s);
+            document.getElementById('pid').innerHTML=date;
+            document.getElementById('time').innerHTML =h+':'+m+':'+s;
+            t = setTimeout('datetime()', 1000);
+        }
+
+        function checktime(i) {
+            if (i<10){
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        var ary=["3","5","7","9","4","6"];
+        var ayy=["1","2","5","8","16"];
+        document.getElementById('arr').innerHTML=ary.concat(ayy);    //数组合并
+        document.getElementById('sort').innerHTML=ary.sort(function (a,b) {
+            return b-a;     //a-b为升序    b-a为降序     默认为升序
+        });
+
+        //push 向数组末尾追加元素   Array.push(x);
+        //reverse 翻转数组        Array.reverse();
+
+        //Math.abs();   绝对值
+        //Math.random();   随机数
+        //Math.min();     最小值
+        //Math.max();      最大值
+    </script>
+</body>
+</html>

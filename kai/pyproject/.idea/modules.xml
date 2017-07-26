@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../data/.idea/data.iml" filepath="$PROJECT_DIR$/../data/.idea/data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../kaiblog/.idea/kaiblog.iml" filepath="$PROJECT_DIR$/../kaiblog/.idea/kaiblog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../liupy/.idea/liupy.iml" filepath="$PROJECT_DIR$/../liupy/.idea/liupy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mybbs/.idea/mybbs.iml" filepath="$PROJECT_DIR$/../mybbs/.idea/mybbs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../myblog/.idea/myblog.iml" filepath="$PROJECT_DIR$/../myblog/.idea/myblog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../myspider/myspider/.idea/myspider.iml" filepath="$PROJECT_DIR$/../myspider/myspider/.idea/myspider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pyproject.iml" filepath="$PROJECT_DIR$/.idea/pyproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spider/.idea/spider.iml" filepath="$PROJECT_DIR$/../spider/.idea/spider.iml" />
+    </modules>
+  </component>
+</project>

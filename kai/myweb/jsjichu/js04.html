@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+    <h2 id="pid"></h2>
+    <script>
+        function demo(a,b) {
+            var sum = a + b ;
+            alert(sum);
+        }
+        function tell() {
+            var i = 10;
+            var j = 20;
+            alert(i*j);
+        }
+        function hello(name,age) {
+            alert('hi,' + name + ',你今年' + age + '岁！')
+        }
+        function fuc(n,m) {
+            if (n>m){
+                return "n比较大"
+            }else {
+                return "m比较大"
+            }
+        }
+        document.getElementById("pid").innerHTML=fuc(20.10)
+    </script>
+    <button onclick="demo(4,5)">demo</button>
+    <button onclick="tell()">tell</button>
+    <button onclick="hello('liu',22)">hello</button>
+    <br>
+
+
+
+
+</body>
+</html>

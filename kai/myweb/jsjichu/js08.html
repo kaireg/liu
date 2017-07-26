@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作CSS</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="div" class="div">
+        <span>hello,this is div!</span>
+    </div>
+    <button onclick="demo()">按钮</button>
+    <button onclick="sizecolor()">按钮</button>
+    <script>
+        function demo() {
+            document.getElementById('div').style.background = 'blue';
+        }
+        function sizecolor() {
+            document.getElementById('div').style.color = 'white';
+        }
+    </script>
+    <br >
+    <p id="pid">hello,world!</p>
+    <button id="btn">句柄</button>
+    <script>
+        //句柄方便以后操作和修改，减少代码的修改量
+        var ge = document.getElementById('btn');
+        ge.addEventListener('click',liu);    //添加监听事件
+        ge.addEventListener('click',kai);
+        ge.removeEventListener('click',kai);   //移除监听事件
+        function liu() {
+            document.getElementById('pid').innerHTML='hello,liu!'
+        }
+        function kai() {
+            document.getElementById('btn').innerHTML='按钮'
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

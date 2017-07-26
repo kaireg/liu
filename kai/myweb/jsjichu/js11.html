@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string字符串对象</title>
+</head>
+<body>
+    <div>
+        <p>属性：length prototype constructor</p>
+        <p>方法:charAt() charCodeAt() concat() fromCharCode() indexOf() lastIndexOf()
+        match() replace() search() slice() substring() substr() valueOf() toLowerCase()
+            toLowerCase() split()
+        </p>
+        <p id="pid1"></p>
+        <p id="pid2"></p>
+        <p id="pid3"></p>
+    </div>
+    <script>
+        var str = "hello,world!";
+        document.getElementById('pid1').innerHTML='该字符串长度为:'+str.length;
+        document.getElementById('pid2').innerHTML='world所在位置:' + str.indexOf('world');
+        document.getElementById('pid3').innerHTML=str.split(',')[1];
+    </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+C:\Anaconda3;C:\Anaconda3\Scripts;C:\Anaconda3\Library\bin;
+C:\Python27\Scripts;C:\Python27
+
+

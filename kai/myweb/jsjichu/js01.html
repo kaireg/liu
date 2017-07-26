@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <script src='/jsjichu/js01.js'></script>
+    <script>
+        document.write("<h1>this is first javascript!</h1>");
+    </script>
+    <span id="pid">hello</span>
+    <script>
+        document.getElementById("pid").innerHTML="biu,biu,biu";
+    </script>
+    <br>
+    <script>
+        var i = 10;
+        var j = 15;
+        var k = i + j;
+        document.write(k);
+    </script>
+    <script>
+        var s = "liu";
+        var n = 1;
+        var arr = ["hello","world","pycharm","javascript"];   //中括号创建数组
+        document.write(s,n,arr[0]);
+        var arr1 = new Array("hello","world","pycharm","javascript");  //创建数组直接赋值
+        var arr2 = new Array();   //创建数组在进行赋值
+        arr2[0] = "hello";
+        arr2[1] = "world";
+        document.write(arr1[2],arr2[1]);
+        var l = null;
+        document.write(l);
+        var r;
+        r = 10;
+//       document.write(r);
+        r = null;
+        document.write(r);
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
